@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><!--Correct XML --><organization name="Kitchen">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--Correct XML -->
+<!DOCTYPE organization SYSTEM "organization.dtd">
+<organization name="Kitchen">
     <department name="Cook table">
         <employee firstname="Elisa" secondname="Merson">
             <hiredate>22-03-2015</hiredate>
