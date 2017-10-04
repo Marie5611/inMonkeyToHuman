@@ -9,7 +9,7 @@
             <jobtitle value="assistant"/>
         </employee>
         <employee firstname="Margarita" secondname="Stuart">
-            <hiredate>25-08-1958</hiredate>
+            <hiredate>15-08-1958</hiredate>
             <salary>80000</salary>
             <jobtitle value="engineer"/>
         </employee>

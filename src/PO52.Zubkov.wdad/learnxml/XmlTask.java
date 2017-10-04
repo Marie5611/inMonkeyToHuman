@@ -33,7 +33,7 @@ String filePath;
         doc = db.parse(new File(filePath));
     }
 
-    public int salaryAverage() //возвращает среднюю заработную плату сотрудников организации.
+    public int salaryAverage() //воhзвращает среднюю заработную плату сотрудников организации.
      {
          int salary = 0;
          NodeList nodeList = doc.getElementsByTagName("employee");

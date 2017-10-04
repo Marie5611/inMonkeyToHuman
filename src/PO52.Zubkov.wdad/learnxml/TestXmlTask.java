@@ -6,6 +6,6 @@ public class TestXmlTask {
         System.out.println(xmlTask.salaryAverage());
         System.out.println(xmlTask.salaryAverage("Cook table"));
         xmlTask.setJobTitile("Elisa","Merson","manager");
-        xmlTask.setSalary("Elisa","Merson",1);
+        xmlTask.setSalary("Elisa","Merson",2);
     }
 }
