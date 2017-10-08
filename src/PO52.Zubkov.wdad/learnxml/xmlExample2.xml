@@ -6,7 +6,7 @@
     </department>
     <department name="Bedroom">
         <employee firstname="Rob" secondname="Wilson">
-            <hiredate>22-04-2016</hiredate>
+            <hiredate>12-04-2016</hiredate>
             <salary>300</salary>
             <jobtitle value="manager"/>
         </employee>
