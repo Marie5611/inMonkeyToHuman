@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT organization (department+)>
+        <!ELEMENT department (employee+)>
+        <!ELEMENT employee (hiredate, salary,
+                jobtitle)+>
+        <!ELEMENT hiredate (#PCDATA)>
+        <!-- hireedate format “DD-MM-YYYY” -->
+        <!ELEMENT salary (#PCDATA)>
+        <!ELEMENT jobtitle EMPTY>
+        <!ATTLIST organization name CDATA #REQUIRED>
+        <!ATTLIST department
+                name CDATA #REQUIRED>
+        <!ATTLIST employee
+                firstname CDATA #REQUIRED
+                secondname CDATA #REQUIRED>
+        <!ATTLIST jobtitle value
+                (assistant | secretary |
+                engineer | manager | head)
+                #REQUIRED>
