@@ -12,5 +12,5 @@
             <usecodebaseonly>no</usecodebaseonly>
         </client>
         <classprovider>http://www.yourhost.free.ru/cp/cp.jar</classprovider>
-        <bindedobject class="PO52.Zubkov.wdad.learn.rmi.Client.XmlDataManager" name="XmlDataManager"/></rmi>
+        <bindedobject class="wdad.learn.rmi.Client.XmlDataManager" name="XmlDataManager"/></rmi>
 </appconfig>

@@ -1,8 +1,8 @@
-package PO52.Zubkov.wdad.learn.rmi.Server;
+package wdad.learn.rmi.Server;
 
-import PO52.Zubkov.wdad.data.managers.PreferencesManager;
-import PO52.Zubkov.wdad.learn.rmi.Client.XmlDataManager;
-import PO52.Zubkov.wdad.utils.PreferencesConstantManager;
+import wdad.data.managers.PreferencesManager;
+import wdad.learn.rmi.Client.XmlDataManager;
+import wdad.utils.PreferencesConstantManager;
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -22,7 +22,7 @@ public class Server {
             System.err.println("errorable registry");
             er.printStackTrace();
         }
-        registry.rebind(preferencesManager.getName("XmlDataManager"), new XmlDataManagerImpl());
+        registry.rebind("XmlDataManager", new XmlDataManagerImpl());
         preferencesManager.addBindedObject("XmlDataManager", XmlDataManager.class.getCanonicalName());
         System.out.println("Запуск сервера");
     }

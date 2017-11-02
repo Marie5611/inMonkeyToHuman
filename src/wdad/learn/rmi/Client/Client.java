@@ -1,7 +1,7 @@
-package PO52.Zubkov.wdad.learn.rmi.Client;
+package wdad.learn.rmi.Client;
 
-import PO52.Zubkov.wdad.data.managers.PreferencesManager;
-import PO52.Zubkov.wdad.utils.PreferencesConstantManager;
+import wdad.data.managers.PreferencesManager;
+import wdad.utils.PreferencesConstantManager;
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -22,3 +22,4 @@ public class Client {
         xmlDataManager.salaryAverage("Bedroom");
     }
 }
+

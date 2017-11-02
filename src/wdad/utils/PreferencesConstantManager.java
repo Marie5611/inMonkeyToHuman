@@ -1,4 +1,4 @@
-package PO52.Zubkov.wdad.utils;
+package wdad.utils;
 
 public interface PreferencesConstantManager {
     String CREATEREGISTRY="appconfig.rmi.server.registry.createregistry";

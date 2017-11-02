@@ -1,9 +1,9 @@
-package PO52.Zubkov.wdad.learn.rmi.Server;
+package wdad.learn.rmi.Server;
 
-import PO52.Zubkov.wdad.Department;
-import PO52.Zubkov.wdad.Employee;
-import PO52.Zubkov.wdad.JobTitle;
-import PO52.Zubkov.wdad.learn.rmi.Client.XmlDataManager;
+import wdad.Department;
+import wdad.Employee;
+import wdad.JobTitle;
+import wdad.learn.rmi.Client.XmlDataManager;
 import org.w3c.dom.*;
 
 import javax.xml.crypto.dsig.TransformException;
@@ -15,20 +15,18 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.Reader;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 import java.util.List;
 
 public class XmlDataManagerImpl extends UnicastRemoteObject implements XmlDataManager {
     private Document doc;
-    private  Reader[] readers;
 
     public XmlDataManagerImpl() throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setValidating(false);
         DocumentBuilder builder = factory.newDocumentBuilder();
-        doc = builder.parse(new File("src\\PO52.Zubkov.wdad\\learn\\rmi\\Server\\xmlExample.xml"));
+        doc = builder.parse(new File("src\\wdad\\learn\\rmi\\Server\\xmlExample.xml"));
     }
 
     @Override
@@ -147,7 +145,7 @@ public class XmlDataManagerImpl extends UnicastRemoteObject implements XmlDataMa
             Transformer transformer = TransformerFactory.newInstance()
                     .newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("src\\PO52.Zubkov.wdad\\learn\\rmi\\Server\\xmlExample.xml"));
+            StreamResult result = new StreamResult(new File("src\\wdad\\learn\\rmi\\Server\\xmlExample.xml"));
             transformer.transform(source, result);
         } catch (TransformerException ex) {
             System.out.println(ex.getMessage());

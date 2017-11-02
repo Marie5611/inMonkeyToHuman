@@ -1,8 +1,8 @@
-package PO52.Zubkov.wdad.learn.rmi.Client;
+package wdad.learn.rmi.Client;
 
-import PO52.Zubkov.wdad.Department;
-import PO52.Zubkov.wdad.Employee;
-import PO52.Zubkov.wdad.JobTitle;
+import wdad.Department;
+import wdad.Employee;
+import wdad.JobTitle;
 
 import javax.xml.crypto.dsig.TransformException;
 import java.rmi.Remote;

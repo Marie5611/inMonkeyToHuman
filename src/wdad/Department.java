@@ -1,4 +1,4 @@
-package PO52.Zubkov.wdad;
+package wdad;
 
 import java.io.Serializable;
 import java.util.List;
