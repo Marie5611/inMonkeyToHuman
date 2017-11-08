@@ -21,12 +21,14 @@ import java.util.Properties;
 public class PreferencesManager {
     private static PreferencesManager instance;
     private Document doc;
-    private static final String FILE_PATH = "src\\wdad\\resources\\configuration\\appconfig.xml";
+    private String FILE_PATH = "src\\wdad\\resources\\configuration\\appconfig.xml";
+
 
     private PreferencesManager() throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setValidating(false);
         DocumentBuilder builder = factory.newDocumentBuilder();
+        if (new File(FILE_PATH).exists()==false) FILE_PATH="wdad\\resources\\configuration\\appconfig.xml";
         doc = builder.parse(new File(FILE_PATH));
     }
 

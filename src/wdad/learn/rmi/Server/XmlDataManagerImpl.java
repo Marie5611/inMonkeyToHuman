@@ -22,11 +22,14 @@ import java.util.List;
 public class XmlDataManagerImpl extends UnicastRemoteObject implements XmlDataManager {
     private Document doc;
 
+
     public XmlDataManagerImpl() throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setValidating(false);
         DocumentBuilder builder = factory.newDocumentBuilder();
-        doc = builder.parse(new File("src\\wdad\\learn\\rmi\\Server\\xmlExample.xml"));
+        if (new File("src/wdad/learn/rmi/Server/xmlExample.xml").exists()==false)
+        {doc = builder.parse(new File("wdad/learn/rmi/Server/xmlExample.xml"));}
+        else doc = builder.parse(new File("src/wdad/learn/rmi/Server/xmlExample.xml"));
     }
 
     @Override
@@ -141,11 +144,14 @@ public class XmlDataManagerImpl extends UnicastRemoteObject implements XmlDataMa
     }
 
     private void saveTransformXML() throws TransformException {
+        StreamResult result;
         try {
             Transformer transformer = TransformerFactory.newInstance()
                     .newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("src\\wdad\\learn\\rmi\\Server\\xmlExample.xml"));
+            if (new File("src/wdad/learn/rmi/Server/xmlExample.xml").exists()==false)
+                result = new StreamResult(new File("wdad\\learn\\rmi\\Server\\xmlExample.xml"));
+            else result = new StreamResult(new File("src\\wdad\\learn\\rmi\\Server\\xmlExample.xml"));
             transformer.transform(source, result);
         } catch (TransformerException ex) {
             System.out.println(ex.getMessage());
