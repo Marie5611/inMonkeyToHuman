@@ -1,4 +1,4 @@
-package PO52.Zubkov.wdad.learnxml;
+package wdad.learnxml;
 
 import org.w3c.dom.*;
 

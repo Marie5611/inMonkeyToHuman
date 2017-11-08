@@ -1,4 +1,4 @@
-package PO52.Zubkov.wdad;
+package wdad;
 
 public class Application {
     public static void main(String[] args) {

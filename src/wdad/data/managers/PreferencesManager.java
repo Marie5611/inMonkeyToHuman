@@ -1,6 +1,6 @@
-package PO52.Zubkov.wdad.data.managers;
+package wdad.data.managers;
 
-import PO52.Zubkov.wdad.utils.PreferencesConstantManager;
+import wdad.utils.PreferencesConstantManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -20,7 +20,7 @@ import java.util.Properties;
 public class PreferencesManager {
     private static PreferencesManager instance;
     private Document doc;
-    private static final String FILE_PATH = "src\\PO52\\Zubkov\\wdad\\resources\\configuration\\appconfig.xml";
+    private static final String FILE_PATH = "src\\wdad\\resources\\configuration\\appconfig.xml";
 
     private PreferencesManager() throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
