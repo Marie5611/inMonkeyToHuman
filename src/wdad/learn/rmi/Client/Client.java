@@ -17,7 +17,7 @@ public class Client {
             System.err.println("errorable registry");
             er.printStackTrace();
         }
-        XmlDataManager xmlDataManager=(XmlDataManager)registry.lookup(preferencesManager.getName("XmlDataManager"));
+        XmlDataManager xmlDataManager=(XmlDataManager)registry.lookup("XmlDataManager");
         System.out.println(xmlDataManager.salaryAverage());
         xmlDataManager.salaryAverage("Bedroom");
     }
