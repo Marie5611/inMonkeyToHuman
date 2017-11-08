@@ -3,6 +3,7 @@ package wdad.data.managers;
 import wdad.utils.PreferencesConstantManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -31,14 +32,20 @@ public class PreferencesManager {
 
     public static PreferencesManager getInstance() throws Exception {
         if (instance == null)
-            instance = new PreferencesManager();
+            synchronized (PreferencesManager.class) {
+                if (instance == null)
+                    instance = new PreferencesManager();
+            }
         return instance;
     }
 
-    private Element getElement(String nameField) {
-        NodeList nodeList = doc.getElementsByTagName(nameField);
-        Element element = (Element) nodeList.item(0);
-        return element;
+
+    public String getName(String object) {
+        StringBuilder nameInfo = new StringBuilder("rmi://");
+        nameInfo.append(getProperty(PreferencesConstantManager.REGISTRYADDRESS)).append(":")
+                .append(getProperty(PreferencesConstantManager.REGISTRYPORT)).append("/")
+                .append(object);
+        return nameInfo.toString();
     }
 
     public void setProperty(String key, String value) {
@@ -77,10 +84,19 @@ public class PreferencesManager {
     }
 
     public void addBindedObject(String name, String className) {
-        Element element = (Element) doc.createElement("bindedobject");
+        NodeList nodeList = doc.getElementsByTagName("bindedobject");
+        Element element;
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            element = (Element) nodeList.item(i);
+            if ((element.getAttribute("class").equals(className)) & (element.getAttribute("name").equals(name)))
+                return;
+        }
+
+        element = doc.createElement("bindedobject");
         element.setAttribute("class", className);
         element.setAttribute("name", name);
         getElement("rmi").appendChild(element);
+        saveTransformXml();
     }
 
     public void removeBindedObject(String name) {
@@ -88,63 +104,84 @@ public class PreferencesManager {
         Element element;
         for (int i = 0; i < nodeList.getLength(); i++) {
             element = (Element) nodeList.item(i);
+
             if (element.getAttribute("name").equals(name)) {
                 getElement("rmi").removeChild(element);
             }
         }
+        saveTransformXml();
     }
+
+    private Element getElement(String nameField) {
+        String[] field = nameField.split("\\.");
+        NodeList nodeList = doc.getElementsByTagName(field[field.length - 1]);
+        Node node = nodeList.item(0);
+        return (Element) node;
+    }
+
     @Deprecated
     public String getCreateregistry() {
         return getElement("createregistry").getTextContent();
     }
+
     @Deprecated
     public void setCreateregistry(String value) {
         getElement("createregistry").setTextContent(value);
     }
+
     @Deprecated
     public String getRegistryaddress() {
         return getElement("registryaddress").getTextContent();
     }
+
     @Deprecated
     public void setRegistryaddress(String value) {
         getElement("registryaddress").setTextContent(value);
     }
+
     @Deprecated
     public int getRegistryport() {
         return Integer.parseInt(getElement("registryport").getTextContent());
     }
+
     @Deprecated
     public void setRegistryport(int value) {
         getElement("registryport").setTextContent(String.valueOf(value));
     }
+
     @Deprecated
     public String getPolicypath() {
         return getElement("policypath").getTextContent();
     }
+
     @Deprecated
     public void setPolicypath(String value) {
         getElement("policypath").setTextContent(value);
     }
+
     @Deprecated
     public String getUsecodebaseonly() {
         return getElement("usecodebaseonly").getTextContent();
     }
+
     @Deprecated
     public void setUsecodebaseonly(String value) {
         getElement("usecodebaseonly").setTextContent(value);
     }
+
+
     @Deprecated
     public String getClassprovider() {
         return getElement("classprovider").getTextContent();
     }
+
     @Deprecated
     public void setClassprovider(String value) {
         getElement("classprovider").setTextContent(value);
     }
 
-    public void saveTransformXml()
 
-    {
+    public void saveTransformXml() {
         try {
             Transformer transformer = TransformerFactory.newInstance()
                     .newTransformer();
@@ -158,4 +195,3 @@ public class PreferencesManager {
         }
     }
 }
-
